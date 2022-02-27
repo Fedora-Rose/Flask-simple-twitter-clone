@@ -1,0 +1,127 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Inter:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    /* @font-face {
+        font-family: Aliance;
+        src: url({{ url_for('static', filename='ali.otf')}});
+    } */
+    nav {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        background-color: #fff;
+        /* box-shadow: 0px 0px 20px 0px #b8b8b8; */
+        align-items: center;
+        justify-content: space-between;
+    }
+    nav h1 {
+        margin: 30px;
+        font-family: 'Inter';
+        font-size: 2.2rem;
+    }
+    nav ul {
+        display: flex;
+        list-style-type: none;
+        font-family: 'Inter';
+        font-size: 1.3rem;
+        margin-right: 30px;
+    }
+    nav ul li a {
+        margin: 10px;
+        text-decoration: none;
+        color: #0969da;
+    }
+
+    .heading-title {
+        font-family: 'Inter';
+        color: #24292f;
+        text-align: center;
+    }
+    .post-form {
+        border: 1px solid #868d94;
+        max-width: 600px;
+        padding: 10px;
+        border-radius: 6px;
+    }
+    .post-form textarea {
+        width: 540px;
+        min-width: calc(100% - 21px);
+        max-width: calc(100% - 21px);
+        border: 1px solid #868d94;
+        border-radius: 6px;
+        height: 200px;
+        resize: none;
+        padding: 10px;
+        display: grid;
+        justify-content: center;
+        font-family: Inter;
+    }
+    .post-form textarea:focus {
+        outline: none;
+    }
+    .center-wrapper {
+        display: grid;
+        place-content: center;
+    }
+    .text-input {
+        width: 90%;
+        padding: 5px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+    }
+    .text-input:focus {
+        outline: none;
+    }
+    button {
+        background-color: #0969da;
+        color: #fff;
+        width: 100%;
+        font-size: 1.4rem;
+        border: none;
+        border-radius: 6px;
+        font-family: 'Inter';
+        margin-top: 5px;
+        padding: 5px;
+        cursor: pointer;
+    }
+    .post {
+        border: 1px solid #868d94;
+        max-width: 600px;
+        padding: 10px;
+        border-radius: 6px;
+        margin: 20px;
+        min-width: 400px;
+        min-height: 100px;
+    }
+    .post-text {
+        color: #57606a;
+        font-family: Inter;
+    }
+    .post-title {
+        font-family: 'Inter';
+        color: #24292f;
+        font-size: 1.5rem;
+    }
+</style>
+
+
+<nav>
+    <h1>Zwitter</h1>
+    <ul>
+        {% if current_user.is_authenticated %}
+        <li>
+            <a href="logout">Logout</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="/login">Login</a>
+            <a href="register">Register</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

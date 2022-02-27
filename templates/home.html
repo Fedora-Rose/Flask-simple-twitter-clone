@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% if current_user.is_authenticated %}
+    <span style="height: 80px;"></span>
+
+    <h1 class="heading-title">Good morning {{ current_user.display_name }}!</h1>
+    <br>
+    <br>
+    <div class="center-wrapper">
+        <form action="/" method="POST" class="post-form">
+            <input type="text" name="title" placeholder="title" class="text-input">
+            <textarea name="text" placeholder="Whats on your mind?..."></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+    
+    <br>
+    <br> 
+    <div class="center-wrapper">
+        {% for post in current_user.posts %}
+        <div class="post">
+            <h1 class="post-title">{{ post.title }}</h1>
+            <h3 class="post-text">{{ post.text }}</h3>
+        </div>
+        
+        {% endfor %}
+    </div>
+    
+    {% else %}
+    <h1>Please Login </h1>
+{% endif %}
+
+    
+</body>
+</html>
